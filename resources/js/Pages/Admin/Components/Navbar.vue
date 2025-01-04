@@ -38,20 +38,21 @@
                         </svg>
                         <span class="sr-only">Toggle sidebar</span>
                     </button>
-                    <a
-                        href="https://flowbite.com"
+                    <Link
+                        :href="route('admin.dashboard')"
                         class="flex items-center justify-between mr-4"
                     >
                         <img
-                            src="https://flowbite.s3.amazonaws.com/logo.svg"
+                            src="https://files.logomakr.com/93h39O-LogoMakr.png"
                             class="mr-3 h-8"
+                            width="150"
                             alt="Flowbite Logo"
                         />
                         <span
                             class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"
-                            >Flowbite</span
+                            >Darko dd</span
                         >
-                    </a>
+                    </Link>
                     <form
                         action="#"
                         method="GET"
