@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('image');
             $table->unsignedBigInteger('product_id');
             // Define the foreign key relationship and cascading delete
+
+            // Ako obrisemo neki proizvod, sve slike ce se obrisati iz ove tabele za taj obrisani proizvod kojeg prepoznaje preko product_id
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
