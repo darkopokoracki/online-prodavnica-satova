@@ -1,6 +1,7 @@
 <script setup>
 import { usePage, router } from "@inertiajs/vue3";
 import { ref } from "vue";
+import { Plus } from '@element-plus/icons-vue'
 
 defineProps({
     products: Array
@@ -16,6 +17,24 @@ const isAddProduct = ref(false);
 const isEditMode = ref(false);
 // const isActionVisible = ref(false);
 const dialogVisible = ref(false);
+
+
+//upload mulitpel images
+const productImages = ref([])
+const dialogImageUrl = ref('')
+const handleFileChange = (file) => {
+    console.log(file)
+    productImages.value.push(file)
+}
+
+const handlePictureCardPreview = (file) => {
+    dialogImageUrl.value = file.url
+    dialogVisible.value = true
+}
+
+const handleRemove = (file) => {
+    console.log(file)
+}
 
 // product form data
 const id = ref("");
@@ -209,6 +228,19 @@ const resetFormData = () => {
                         ></textarea>
                     </div>
                 </div>
+
+                <!-- Upload Multiple images -->
+                <div class="grid md:gap-6">
+                    <div class="relative z-0 w-full mb-6 group">
+                        <el-upload v-model:file-list="productImages" list-type="picture-card" multiple
+                            :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="handleFileChange">
+                            <el-icon>
+                                <Plus />
+                            </el-icon>
+                        </el-upload>
+                    </div>
+                </div>
+
                 <button
                     type="submit"
                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
