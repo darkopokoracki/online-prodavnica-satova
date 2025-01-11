@@ -23,8 +23,10 @@ const dialogVisible = ref(false);
 const productImages = ref([])
 const dialogImageUrl = ref('')
 const handleFileChange = (file) => {
-    console.log(file)
-    productImages.value.push(file)
+    console.log('Ovo je jedan file koji dodajemo od ukupno 3', file);
+    productImages.value.push(file);
+
+    console.log('Ovo je niz slika koje smo dodali', productImages.value);
 }
 
 const handlePictureCardPreview = (file) => {
@@ -57,6 +59,8 @@ const addProduct = async () => {
     formData.append("description", description.value);
     formData.append("brand_id", brand_id.value);
     formData.append("category_id", category_id.value);
+
+    console.log('Usli smo u funkciju za dodavanje slike za server.', product_images.value);
 
     for (const image of product_images.value) {
         formData.append("product_images[]", image.raw);
@@ -233,7 +237,7 @@ const resetFormData = () => {
                 <div class="grid md:gap-6">
                     <div class="relative z-0 w-full mb-6 group">
                         <el-upload v-model:file-list="productImages" list-type="picture-card" multiple
-                            :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :on-change="handleFileChange">
+                            :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :auto-upload="false" :on-change="handleFileChange">
                             <el-icon>
                                 <Plus />
                             </el-icon>

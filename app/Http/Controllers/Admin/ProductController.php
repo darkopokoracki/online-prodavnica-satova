@@ -30,7 +30,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        dd($request->file('product_image')); // for debugging.
+        // dd($request->file('product_image')); // for debugging.
         $product = new Product;
         $product->title = $request->title;
         $product->price = $request->price;
