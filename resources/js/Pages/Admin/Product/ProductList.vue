@@ -24,7 +24,7 @@ const productImages = ref([])
 const dialogImageUrl = ref('')
 const handleFileChange = (file) => {
     console.log('Ovo je jedan file koji dodajemo od ukupno 3', file);
-    productImages.value.push(file);
+    product_images.value.push(file);
 
     console.log('Ovo je niz slika koje smo dodali', productImages.value);
 }

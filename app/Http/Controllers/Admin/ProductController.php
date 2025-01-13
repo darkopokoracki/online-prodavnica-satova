@@ -9,6 +9,7 @@ use Inertia\Inertia;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\ProductImage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -30,7 +31,7 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->file('product_image')); // for debugging.
+        // dd($request->file('product_images')); // for debugging.
         $product = new Product;
         $product->title = $request->title;
         $product->price = $request->price;
@@ -55,6 +56,6 @@ class ProductController extends Controller
                 ]);
             }
         }
-        return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
+        return redirect()->route('admin.products.index')->with('success', 'Uspešno ste dodali proizvod');
     }
 }
