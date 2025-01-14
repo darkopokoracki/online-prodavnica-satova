@@ -4,14 +4,13 @@ import { ref } from "vue";
 import { Plus } from "@element-plus/icons-vue";
 
 defineProps({
-    products: Array,
-});
+    products: Array
+})
 
-const products = usePage().props.products;
 const brands = usePage().props.brands;
 const categories = usePage().props.categories;
 
-console.log(products);
+// console.log(products);
 
 const isAddProduct = ref(false);
 const isEditMode = ref(false);
