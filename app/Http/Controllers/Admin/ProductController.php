@@ -98,4 +98,10 @@ class ProductController extends Controller
         $image = ProductImage::where('id', $id)->delete();
         return redirect()->route('admin.products.index')->with('success', 'Fotografija je uspešno obrisana.');
     }
+
+    public function destory($id)
+    {
+        $product = Product::findOrFail($id)->delete();
+        return redirect()->route('admin.products.index')->with('success', 'Uspešno ste obrisali proizvod.');
+    }
 }
