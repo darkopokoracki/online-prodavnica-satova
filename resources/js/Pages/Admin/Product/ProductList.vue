@@ -4,8 +4,8 @@ import { ref } from "vue";
 import { Plus } from "@element-plus/icons-vue";
 
 defineProps({
-    products: Array
-})
+    products: Array,
+});
 
 const brands = usePage().props.brands;
 const categories = usePage().props.categories;
@@ -48,41 +48,41 @@ const inStock = ref("");
 // Add product method
 const addProduct = async () => {
     const formData = new FormData();
-    formData.append('title', title.value);
-    formData.append('price', price.value);
-    formData.append('quantity', quantity.value);
-    formData.append('description', description.value);
-    formData.append('brand_id', brand_id.value);
-    formData.append('category_id', category_id.value);
+    formData.append("title", title.value);
+    formData.append("price", price.value);
+    formData.append("quantity", quantity.value);
+    formData.append("description", description.value);
+    formData.append("brand_id", brand_id.value);
+    formData.append("category_id", category_id.value);
     // Append product images to the FormData
     for (const image of productImages.value) {
-        formData.append('product_images[]', image.raw);
+        formData.append("product_images[]", image.raw);
     }
 
     try {
-        await router.post('products/store', formData, {
-            onSuccess: page => {
+        await router.post("products/store", formData, {
+            onSuccess: (page) => {
                 Swal.fire({
                     toast: true,
-                    icon: 'success',
-                    position: 'top-end',
+                    icon: "success",
+                    position: "top-end",
                     showConfirmButton: false,
-                    title: page.props.flash.success
-                })
+                    title: page.props.flash.success,
+                });
                 dialogVisible.value = false;
                 resetFormData();
             },
-        })
+        });
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
-}
+};
 
-//delete sigal product image 
+//delete sigal product image
 
 const deleteImage = async (pimage, index) => {
     try {
-        await router.delete('/admin/products/image/' + pimage.id, {
+        await router.delete("/admin/products/image/" + pimage.id, {
             onSuccess: (page) => {
                 product_images.value.splice(index, 1);
                 Swal.fire({
@@ -90,14 +90,14 @@ const deleteImage = async (pimage, index) => {
                     icon: "success",
                     position: "top-end",
                     showConfirmButton: false,
-                    title: page.props.flash.success
+                    title: page.props.flash.success,
                 });
-            }
-        })
+            },
+        });
     } catch (err) {
         console.log(err);
     }
-}
+};
 
 // Open Add Product Modal
 const openAddProductModal = () => {
@@ -141,20 +141,20 @@ const resetFormData = () => {
 //update product method
 const updateProduct = async () => {
     const formData = new FormData();
-    formData.append('title', title.value);
-    formData.append('price', price.value);
-    formData.append('quantity', quantity.value);
-    formData.append('description', description.value);
-    formData.append('category_id', category_id.value);
-    formData.append('brand_id', brand_id.value);
-    formData.append("_method", 'PUT');
+    formData.append("title", title.value);
+    formData.append("price", price.value);
+    formData.append("quantity", quantity.value);
+    formData.append("description", description.value);
+    formData.append("category_id", category_id.value);
+    formData.append("brand_id", brand_id.value);
+    formData.append("_method", "PUT");
     // Append product images to the FormData
     for (const image of productImages.value) {
-        formData.append('product_images[]', image.raw);
+        formData.append("product_images[]", image.raw);
     }
 
     try {
-        await router.post('products/update/' + id.value, formData, {
+        await router.post("products/update/" + id.value, formData, {
             onSuccess: (page) => {
                 dialogVisible.value = false;
                 resetFormData();
@@ -163,13 +163,47 @@ const updateProduct = async () => {
                     icon: "success",
                     position: "top-end",
                     showConfirmButton: false,
-                    title: page.props.flash.success
+                    title: page.props.flash.success,
                 });
-            }
-        })
+            },
+        });
     } catch (err) {
-        console.log(err)
+        console.log(err);
     }
+};
+
+//delete product method 
+const deleteProduct = (product, index) => {
+    Swal.fire({
+        title: 'Da li ste sigurni?',
+        text: "Ova radnja se ne može poništiti!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        cancelButtonText: 'Odustani',
+        confirmButtonText: 'Potvrdi brisanje'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            try {
+                router.delete('products/destory/' + product.id, {
+                    onSuccess: (page) => {
+                        this.delete(product, index);
+                        Swal.fire({
+                            toast: true,
+                            icon: "success",
+                            position: "top-end",
+                            showConfirmButton: false,
+                            title: page.props.flash.success
+                        });
+                    }
+                })
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    })
+
 }
 </script>
 
@@ -184,7 +218,10 @@ const updateProduct = async () => {
         >
             <!-- Forma za popunjavanje atributa proizvoda - start -->
 
-            <form class="max-w-md mx-auto" @submit.prevent="isEditMode ? updateProduct() : addProduct()">
+            <form
+                class="max-w-md mx-auto"
+                @submit.prevent="isEditMode ? updateProduct() : addProduct()"
+            >
                 <div class="relative z-0 w-full mb-5 group">
                     <input
                         v-model="title"
@@ -334,7 +371,6 @@ const updateProduct = async () => {
                         </span>
                     </div>
                 </div>
-
 
                 <button
                     type="submit"
@@ -693,13 +729,6 @@ const updateProduct = async () => {
                                             :aria-labelledby="`${product.id}-button`"
                                         >
                                             <li>
-                                                <a
-                                                    href="#"
-                                                    class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                    >Show</a
-                                                >
-                                            </li>
-                                            <li>
                                                 <button
                                                     @click="
                                                         openEditModal(product)
@@ -714,8 +743,14 @@ const updateProduct = async () => {
                                         <div class="py-1">
                                             <a
                                                 href="#"
+                                                @click="
+                                                    deleteProduct(
+                                                        product,
+                                                        index
+                                                    )
+                                                "
                                                 class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
-                                                >Delete</a
+                                                >Obriši</a
                                             >
                                         </div>
                                     </div>
