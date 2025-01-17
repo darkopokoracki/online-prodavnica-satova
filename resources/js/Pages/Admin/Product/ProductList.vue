@@ -188,7 +188,6 @@ const deleteProduct = (product, index) => {
             try {
                 router.delete('products/destory/' + product.id, {
                     onSuccess: (page) => {
-                        this.delete(product, index);
                         Swal.fire({
                             toast: true,
                             icon: "success",
