@@ -12,7 +12,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $products = Product::with('brand', 'category', 'product_images')->orderBy('id','desc')->limit(8)->get();
+        // $products = Product::with('brand', 'category', 'product_images')->orderBy('id','desc')->limit(8)->get();
+        $products = Product::with('brand', 'category', 'product_images')->orderBy('id','desc')->get();
         return Inertia::render('User/Index', [
             'products'=>$products,
             'canLogin' => app('router')->has('login'),
