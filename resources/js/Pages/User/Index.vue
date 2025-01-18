@@ -5,7 +5,7 @@ import { onMounted } from "vue";
 import { initFlowbite } from "flowbite";
 import Filter from "./Layouts/Filter.vue";
 import { Link, router } from "@inertiajs/vue3";
-
+import Hero from "./Layouts/Hero.vue";
 defineProps({
     products: Array
 })
@@ -34,6 +34,8 @@ const addToCart = (product) => {
 </script>
 
 <template>
+
+    <Hero></Hero>
     <UserLayouts>
         <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-12">
             <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">

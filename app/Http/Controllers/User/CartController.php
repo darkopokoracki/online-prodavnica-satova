@@ -28,9 +28,10 @@ class CartController extends Controller
                         'userAddress' => $userAddress
                     ]
                 );
-            } 
+            }
             
         }
+        // for the guest user.
         else {
             $cartItems = Cart::getCookieCartItems();
             if (count($cartItems) > 0) {

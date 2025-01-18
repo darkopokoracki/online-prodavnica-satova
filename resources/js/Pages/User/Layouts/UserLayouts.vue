@@ -14,7 +14,6 @@ onMounted(() => {
 <template>
 
 <Header></Header>
-<Hero></Hero>
 <slot/>
 <Footer></Footer>
 
