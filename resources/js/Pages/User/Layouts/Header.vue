@@ -49,11 +49,11 @@ const handleLogout = () => {
                     >
 
                     <button
-                        v-if="auth.user"
                         type="button"
                         class="relative inline-flex items-center p-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
-                        <svg
+                        <Link :href="route('cart.view')">
+                            <svg
                             class="w-6 h-6 text-white dark:text-white"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
@@ -70,6 +70,8 @@ const handleLogout = () => {
                                 d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"
                             />
                         </svg>
+                        </Link>
+
 
                         <span class="sr-only">Notifications</span>
                         <div
