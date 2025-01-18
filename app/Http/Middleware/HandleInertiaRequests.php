@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Request;
+use App\Http\Resources\CartResource;
+use App\Helper\Cart;
 use Inertia\Middleware;
 use Illuminate\Foundation\Application;
 
@@ -41,6 +43,7 @@ class HandleInertiaRequests extends Middleware
                 'warning' => fn () => $request->session()->get('warning'),
                 'info' => fn () => $request->session()->get('info')
             ],
+            'cart' => new CartResource(Cart::getProductsAndCartItems()),
             'canLogin' => app('router')->has('login'),
             'canRegister' => app('router')->has('register'),
             'laravelVersion' => Application::VERSION,
