@@ -106,10 +106,20 @@ function submit() {
                                     >
                                         <div class="flex items-center">
                                             <button
-                                                @click.prevent="update(product, carts[itemId(product.id)].quantity - 1)"
+                                                @click.prevent="
+                                                    update(
+                                                        product,
+                                                        carts[
+                                                            itemId(product.id)
+                                                        ].quantity - 1
+                                                    )
+                                                "
                                                 type="button"
                                                 id="decrement-button"
-                                                :disabled="carts[itemId(product.id)].quantity <= 1"
+                                                :disabled="
+                                                    carts[itemId(product.id)]
+                                                        .quantity <= 1
+                                                "
                                                 class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                                             >
                                                 <svg
@@ -129,7 +139,10 @@ function submit() {
                                                 </svg>
                                             </button>
                                             <input
-                                                v-model="carts[itemId(product.id)].quantity"
+                                                v-model="
+                                                    carts[itemId(product.id)]
+                                                        .quantity
+                                                "
                                                 type="text"
                                                 id="counter-input"
                                                 data-input-counter
@@ -139,7 +152,14 @@ function submit() {
                                                 required
                                             />
                                             <button
-                                                @click.prevent="update(product, carts[itemId(product.id)].quantity + 1)"
+                                                @click.prevent="
+                                                    update(
+                                                        product,
+                                                        carts[
+                                                            itemId(product.id)
+                                                        ].quantity + 1
+                                                    )
+                                                "
                                                 type="button"
                                                 id="increment-button"
                                                 class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
@@ -306,15 +326,106 @@ function submit() {
                         <div
                             class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6"
                         >
-                            <form class="space-y-4">
-                                <div>
-                                    <h3>Shipping Address</h3>
+                            <form @submit.prevent="submit">
+                                <div class="relative mb-4">
+                                    <label
+                                        for="name"
+                                        class="leading-7 text-sm text-gray-600"
+                                        >Address 1</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="address1"
+                                        v-model="form.address1"
+                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                    />
                                 </div>
+                                <div class="relative mb-4">
+                                    <label
+                                        for="email"
+                                        class="leading-7 text-sm text-gray-600"
+                                        >City</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="email"
+                                        name="city"
+                                        v-model="form.city"
+                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                    />
+                                </div>
+                                <div class="relative mb-4">
+                                    <label
+                                        for="email"
+                                        class="leading-7 text-sm text-gray-600"
+                                        >State</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="email"
+                                        name="state"
+                                        v-model="form.state"
+                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                    />
+                                </div>
+                                <div class="relative mb-4">
+                                    <label
+                                        for="email"
+                                        class="leading-7 text-sm text-gray-600"
+                                        >Zipcode</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="email"
+                                        name="zipcode"
+                                        v-model="form.zipcode"
+                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                    />
+                                </div>
+                                <div class="relative mb-4">
+                                    <label
+                                        for="email"
+                                        class="leading-7 text-sm text-gray-600"
+                                        >Country Code</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="email"
+                                        name="countrycode"
+                                        v-model="form.country_code"
+                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                    />
+                                </div>
+                                <div class="relative mb-4">
+                                    <label
+                                        for="email"
+                                        class="leading-7 text-sm text-gray-600"
+                                        >Address type</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="email"
+                                        name="type"
+                                        v-model="form.type"
+                                        class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                                    />
+                                </div>
+
                                 <button
+                                    v-if="formFilled || userAddress"
                                     type="submit"
-                                    class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                    class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                                 >
-                                    Apply Code
+                                    Checkout
+                                </button>
+
+                                <button
+                                    v-else
+                                    type="submit"
+                                    class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded text-lg"
+                                >
+                                    Add Address to continue
                                 </button>
                             </form>
                         </div>
