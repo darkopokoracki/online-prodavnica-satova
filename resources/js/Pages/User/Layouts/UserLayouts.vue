@@ -6,6 +6,11 @@ import Header from './Header.vue';
 import Hero from './Hero.vue';
 import Footer from './Footer.vue';
 
+defineProps({
+    fullName: String,
+    emailAddress: String
+})
+
 onMounted(() => {
     initFlowbite();
 })
@@ -13,7 +18,7 @@ onMounted(() => {
 
 <template>
 
-<Header></Header>
+<Header :fullName="fullName" :emailAddress="emailAddress"></Header>
 <slot/>
 <Footer></Footer>
 

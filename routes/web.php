@@ -25,6 +25,8 @@ use Inertia\Inertia;
 */
 
 Route::get('/', [UserController::class,'index'])->name('home');
+Route::get('/about', [UserController::class,'about'])->name('about');
+Route::get('/contact', [UserController::class,'contact'])->name('contact');
 
 Route::get('/dashboard',[DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 

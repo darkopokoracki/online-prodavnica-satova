@@ -8,7 +8,9 @@ import { Link, router } from "@inertiajs/vue3";
 import Hero from "./Layouts/Hero.vue";
 import Products from "./Components/Products.vue";
 defineProps({
-    products: Array
+    products: Array,
+    fullName: String,
+    emailAddress: String
 })
 
 // initialize components based on data attribute selectors
@@ -21,12 +23,12 @@ onMounted(() => {
 
 <template>
 
-    <Hero></Hero>
-    <UserLayouts>
+
+    <UserLayouts  :fullName="fullName" :emailAddress="emailAddress">
         <section class="bg-gray-50 py-8 antialiased dark:bg-gray-900 md:py-12">
             <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
                 <!-- Heading & Filters -->
-
+                <Hero></Hero>
                 <!-- p.l components -->
                 <Products :products="products"></Products>
 
