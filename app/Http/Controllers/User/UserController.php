@@ -18,8 +18,10 @@ class UserController extends Controller
 
         $user = Auth::user();
         // dd($user);
-        $fullName = $user->name;
-        $emailAddress = $user->email;
+        if ($user) {
+            $fullName = $user->name;
+            $emailAddress = $user->email;
+        }
 
         // dd($emailAddress);
 
@@ -31,8 +33,8 @@ class UserController extends Controller
             'canRegister' => app('router')->has('register'),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
-            'fullName' => $fullName,
-            'emailAddress' => $emailAddress
+            'fullName' => $fullName ?? 'Guest',
+            'emailAddress' => $emailAddress ?? 'Guest@gmail.com'
         ]);
     }
 
