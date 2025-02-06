@@ -1,12 +1,12 @@
 <script setup>
-import { Link, router } from '@inertiajs/vue3';
- defineProps({
-    products:Array
- })
+import { Link, router } from "@inertiajs/vue3";
+defineProps({
+    products: Array,
+});
 
 const addToCart = (product) => {
     console.log("Product: ", product);
-    router.post(route('cart.store', product), {
+    router.post(route("cart.store", product), {
         onSuccess: (page) => {
             if (page.props.flash.success) {
                 Swal.fire({
@@ -14,21 +14,20 @@ const addToCart = (product) => {
                     icon: "success",
                     position: "top-end",
                     showConfirmButton: false,
-                    title: page.props.flash.success
+                    title: page.props.flash.success,
                 });
             }
         },
-    })
-}
+    });
+};
 </script>
-
 
 <template>
     <div
         class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-3 mt-6"
     >
         <div
-            class="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800"
+            class="rounded-lg border border-gray-200 bg-white p-6 shadow-md transition duration-300 ease-in-out transform hover:shadow-2xl hover:scale-105 hover:border-yellow-500 hover:ring-2 hover:ring-yellow-400 dark:border-gray-700 dark:bg-gray-800"
             v-for="product in products"
         >
             <div class="h-56 w-full">
@@ -48,7 +47,6 @@ const addToCart = (product) => {
                 </a>
             </div>
             <div class="pt-6">
-
                 <span
                     class="text-lg font-semibold leading-tight text-gray-900 dark:text-white"
                     >{{ product.title }}</span
@@ -110,7 +108,7 @@ const addToCart = (product) => {
 
                     <button
                         type="button"
-                        class="inline-flex items-center rounded-lg bg-gray-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                        class="inline-flex items-center rounded-lg bg-gray-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-400 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800"
                         @click="addToCart(product)"
                     >
                         <svg

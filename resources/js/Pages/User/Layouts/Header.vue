@@ -31,7 +31,7 @@ const handleLogout = () => {
             >
                 <Link :href="route('home')" class="flex items-center">
                     <img
-                        src="assets/darko-satovi-logo.png"
+                        src="/assets/darko-satovi-logo.png"
                         class="mr-3 h-6 sm:h-9"
                         alt="Flowbite Logo"
                     />

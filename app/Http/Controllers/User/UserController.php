@@ -26,7 +26,8 @@ class UserController extends Controller
         // dd($emailAddress);
 
 
-        $products = Product::with('brand', 'category', 'product_images')->orderBy('id','desc')->get();
+        // $products = Product::with('brand', 'category', 'product_images')->orderBy('id','desc')->get();
+        $products = Product::with('brand', 'category', 'product_images')->orderBy('id','desc')->limit(6)->get();
         return Inertia::render('User/Index', [
             'products'=> $products,
             'canLogin' => app('router')->has('login'),

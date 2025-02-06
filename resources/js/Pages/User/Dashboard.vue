@@ -19,7 +19,7 @@ defineProps({
                 >
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Order ID # {{ order.id }}
+                            Broj narudžbine # {{ order.id }}
                         </th>
                     </tr>
                 </thead>
@@ -41,7 +41,7 @@ defineProps({
                         <td class="px-6 py-4">
                             {{ item.product.category.name }}
                         </td>
-                        <td class="px-6 py-4">${{ item.product.price }}</td>
+                        <td class="px-6 py-4">{{ item.product.price }} RSD</td>
                     </tr>
                 </tbody>
             </table>
