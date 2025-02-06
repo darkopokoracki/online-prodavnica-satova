@@ -202,29 +202,6 @@ function submit() {
                                         >
 
                                         <div class="flex items-center gap-4">
-                                            <button
-                                                type="button"
-                                                class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-white"
-                                            >
-                                                <svg
-                                                    class="me-1.5 h-5 w-5"
-                                                    aria-hidden="true"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="24"
-                                                    height="24"
-                                                    fill="none"
-                                                    viewBox="0 0 24 24"
-                                                >
-                                                    <path
-                                                        stroke="currentColor"
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
-                                                    />
-                                                </svg>
-                                                Add to Favorites
-                                            </button>
 
                                             <button
                                                 type="button"
@@ -248,7 +225,7 @@ function submit() {
                                                         d="M6 18 17.94 6M18 18 6.06 6"
                                                     />
                                                 </svg>
-                                                Remove
+                                                Ukloni
                                             </button>
                                         </div>
                                     </div>
@@ -266,7 +243,7 @@ function submit() {
                             <p
                                 class="text-xl font-semibold text-gray-900 dark:text-white"
                             >
-                                Order summary
+                                Kratak pregled
                             </p>
 
                             <div class="space-y-4">
@@ -276,7 +253,7 @@ function submit() {
                                     <dt
                                         class="text-base font-bold text-gray-900 dark:text-white"
                                     >
-                                        Total
+                                        Ukupno
                                     </dt>
                                     <dd
                                         class="text-base font-bold text-gray-900 dark:text-white"
@@ -289,21 +266,21 @@ function submit() {
                             <a
                                 href="#"
                                 class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-                                >Proceed to Checkout</a
+                                >Idi na plaćanje</a
                             >
 
                             <div class="flex items-center justify-center gap-2">
                                 <span
                                     class="text-sm font-normal text-gray-500 dark:text-gray-400"
                                 >
-                                    or
+                                    ili
                                 </span>
-                                <a
-                                    href="#"
+                                <Link
+                                    :href="route('products.index')"
                                     title=""
                                     class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500"
                                 >
-                                    Continue Shopping
+                                    Nastavi sa kupovinom
                                     <svg
                                         class="h-5 w-5"
                                         aria-hidden="true"
@@ -319,7 +296,7 @@ function submit() {
                                             d="M19 12H5m14 0-4 4m4-4-4-4"
                                         />
                                     </svg>
-                                </a>
+                                </Link>
                             </div>
                         </div>
 
@@ -331,7 +308,7 @@ function submit() {
                                     <label
                                         for="name"
                                         class="leading-7 text-sm text-gray-600"
-                                        >Address 1</label
+                                        >Adresa</label
                                     >
                                     <input
                                         type="text"
@@ -345,7 +322,7 @@ function submit() {
                                     <label
                                         for="email"
                                         class="leading-7 text-sm text-gray-600"
-                                        >City</label
+                                        >Grad</label
                                     >
                                     <input
                                         type="text"
@@ -359,7 +336,7 @@ function submit() {
                                     <label
                                         for="email"
                                         class="leading-7 text-sm text-gray-600"
-                                        >State</label
+                                        >Država</label
                                     >
                                     <input
                                         type="text"
@@ -373,7 +350,7 @@ function submit() {
                                     <label
                                         for="email"
                                         class="leading-7 text-sm text-gray-600"
-                                        >Zipcode</label
+                                        >Poštanski broj</label
                                     >
                                     <input
                                         type="text"
@@ -387,7 +364,7 @@ function submit() {
                                     <label
                                         for="email"
                                         class="leading-7 text-sm text-gray-600"
-                                        >Country Code</label
+                                        >Kod Zemlje</label
                                     >
                                     <input
                                         type="text"
@@ -401,7 +378,7 @@ function submit() {
                                     <label
                                         for="email"
                                         class="leading-7 text-sm text-gray-600"
-                                        >Address type</label
+                                        >Tip adrese</label
                                     >
                                     <input
                                         type="text"
@@ -417,7 +394,7 @@ function submit() {
                                     type="submit"
                                     class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg"
                                 >
-                                    Checkout
+                                    Idi na plaćanje
                                 </button>
 
                                 <button
@@ -425,7 +402,7 @@ function submit() {
                                     type="submit"
                                     class="text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded text-lg"
                                 >
-                                    Add Address to continue
+                                    Dodaj adresu da bi nastavio
                                 </button>
                             </form>
                         </div>

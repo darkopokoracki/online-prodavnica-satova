@@ -7,6 +7,7 @@ use App\Models\Product;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -14,13 +15,37 @@ class UserController extends Controller
     {
         // $products = Product::with('brand', 'category', 'product_images')->orderBy('id','desc')->limit(8)->get();
         // return Inertia::render('Welcome');
-        $products = Product::with('brand', 'category', 'product_images')->orderBy('id','desc')->get();
+
+        $user = Auth::user();
+        // dd($user);
+        if ($user) {
+            $fullName = $user->name;
+            $emailAddress = $user->email;
+        }
+
+        // dd($emailAddress);
+
+
+        // $products = Product::with('brand', 'category', 'product_images')->orderBy('id','desc')->get();
+        $products = Product::with('brand', 'category', 'product_images')->orderBy('id','desc')->limit(6)->get();
         return Inertia::render('User/Index', [
-            'products'=>$products,
+            'products'=> $products,
             'canLogin' => app('router')->has('login'),
             'canRegister' => app('router')->has('register'),
             'laravelVersion' => Application::VERSION,
             'phpVersion' => PHP_VERSION,
+            'fullName' => $fullName ?? 'Guest',
+            'emailAddress' => $emailAddress ?? 'Guest@gmail.com'
         ]);
+    }
+
+    public function about() 
+    {
+        return Inertia::render('User/About');
+    }
+
+    public function contact()
+    {
+        return Inertia::render('User/Contact');
     }
 }
